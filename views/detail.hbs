@@ -1,0 +1,121 @@
+
+<body>
+      <div class="main-detail">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="/">Home</a></li>
+              <li class="breadcrumb-item"><a href="/recipes">Recipes</a></li>
+              <li class="breadcrumb-item"><a href="/recipes-{{data.type}}">{{category}}</a></li>
+              <li class="breadcrumb-item active" aria-current="page">{{data.name}}</li>
+            </ol>
+          </nav>
+
+          <h1 class="title-dish">
+            {{data.name}}
+          </h1>
+          <div class="info">
+            <span class="up-date">Update:<span class="date">{{up_date}}</span></span>
+            <span class="up-date">Author: <span id="author" style="cursor: pointer;" onclick="location.href='/the-recipes-by-{{data.author}}'">{{data.author}}</span></span>
+          </div>
+          <p class="description-dish">
+            <span style="font-weight: 600;">Short description: </span>{{data.description}}
+          </p>
+        <div class="row stat">
+            <div class="col-md-8">
+                <img src="{{data.img}}" alt="">
+            </div>
+            <div class="col-md-4">
+                <ul class="info-stat">
+                    <li class="complex"> <i class="fa fa-bolt" aria-hidden="true"></i> {{data.complex}}</li>
+                    <li class="duration"> <i class="fa fa-clock-o" aria-hidden="true"></i> <span class="mins">{{data.duration}} minutes</span> </li>
+                    <li class="serving"> <i class="fa fa-user" aria-hidden="true"></i> {{data.serve}} people</li>
+                </ul>
+            </div>
+          </div>
+        
+        
+          <div class="task-progress">
+            <div class="btn btn-outline-info task" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1"><span class="task-caption">1. Ingredients</span> </div>
+            <div class="complete" id ="complete-ingre" style="visibility: hidden;">
+              <i class="fa fa-check-circle" aria-hidden="true"></i>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <div class="collapse multi-collapse" id="multiCollapseExample1">
+                <div class="card card-body">
+
+                  <div class="custom-control form-control-lg custom-checkbox info-task">
+                    <input type="checkbox" class="custom-control-input ingre-box" id="ingre-all">
+                    <label class="custom-control-label" for="ingre-all">All prepared</label>
+                  </div>
+                  {{#each data.ingredients}}
+                      <div class="custom-control form-control-lg custom-checkbox info-task">
+                        <input type="checkbox" class="custom-control-input ingre-box" id="ingre{{@index}}">
+                        <label class="custom-control-label" for="ingre{{@index}}">{{this}}</label>
+                      </div>
+                  {{/each}}  
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="task-progress">
+            <div class="btn btn-outline-info task" data-toggle="collapse" href="#multiCollapseExample2" role="button" aria-expanded="false" aria-controls="multiCollapseExample2"><span class="task-caption">2. Directions</span> </div>
+            <div class="complete" id="complete-all-step" style="visibility: hidden;">
+              <i class="fa fa-check-circle" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="collapse multi-collapse" id="multiCollapseExample2">
+                <div class="card card-body step">
+                  <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    {{#each data.direction}}
+                    <a class="nav-link {{#if @first}}active{{/if}} task-progress" id="v-pills-step{{@index}}-tab" data-toggle="pill" href="#v-pills-step{{@index}}" role="tab" aria-controls="v-pills-step{{@index}}" aria-selected="true">Step {{plus @index}}</a>
+                    {{/each}}
+                  </div>
+                  <div class="tab-content" id="v-pills-tabContent">
+                    
+                    {{#each data.direction}}
+                      <div class="tab-pane fade show {{#if @first}}active{{/if}} task" id="v-pills-step{{@index}}" role="tabpane{{@index}}" aria-labelledby="v-pills-step{{@index}}-tab">
+                       <p class="info-task"> {{this}} </p>
+                       {{#if @last}}<button type="button" class="btn btn-success" id="complete-step">Completed this dish</button>{{/if}}
+                      </div>
+                    {{/each}}
+
+                    
+                    {{!-- <div class="tab-pane fade" id="v-pills-step3" role="tabpanel" aria-labelledby="v-pills-step3-tab">
+                      <p class="info-task">Lightly oil grill grate. Cook shrimp for 2 to 3 minutes per side, or until opaque. Transfer to a serving dish, garnish with lemon wedges, and serve.</p> --}}
+                      
+                  </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+  </div>
+
+  <div class="recipe-area">
+    <h3>The similar recipes</h3>
+    <div class="card-section">
+    <div class="container" ></div>
+    <div class="card-container" style="width: 95%; margin: 20px auto;">
+          <div class="row">
+            {{#each similar}}
+                {{> recipe_card this}}
+              {{else}}
+                <p style="margin: 40px 10vw; margin-top: 0px; font-size: 25px">There is no similar recipe for this.</p>
+            {{/each}}
+          </div>
+          </div>
+          </div>
+      {{#if similar}}
+        <button type="button" class="btn btn-secondary btn-lg btn-block more" onclick="location.href='/recipes-{{data.type}}'">View more</button>
+      {{/if}}
+  </div>
+  </div>
+</body>

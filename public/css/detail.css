@@ -1,0 +1,305 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Grandstander:wght@500&display=swap');
+h1.title-dish {
+    font-family: 'Grandstander', cursive;
+    font-size: 60px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 1px grey;
+    padding: 2vw 3vw;
+    color: #290001;
+}
+
+div.main-detail p.description-dish {
+    font-size: 24px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-left: 5vw;
+    margin-top: 2vw;
+    margin-bottom: 2vw;
+}
+
+div.info {
+    margin-left: 8vw;
+    display: flex;
+}
+
+div.info > span {
+    display: block;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 22px;
+    margin-right: 6vw;
+}
+
+div.info .up-date .date {
+    font-size: 24px;
+    margin-left: 8px;
+}
+
+div.main-detail div.row.stat {
+    margin: 40px auto;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div.main-detail div.row.stat img {
+    width: 100%;
+    height: 98%;
+}
+
+div.main-detail div.row.stat .col-md-4 ul.info-stat {
+    background-color: rgb(230, 224, 224);
+    border-radius: 5%;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+div.main-detail div.row.stat .col-md-4 ul.info-stat li{
+    margin-left: 4vw;
+    margin-top: 2vw;
+    margin-bottom: 2vw;
+    font-size: 150%;
+}
+
+.progress {
+    width: 90%; margin: 10px auto;
+}
+
+
+
+.task-caption {
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: #290001;
+    font-size: 30px;
+}
+
+.btn.btn-outline-info.task {
+    margin-left: 10px;
+    border-color: #c87941;
+    background-color: #ffd571;
+    margin-left: 10vw;
+}
+
+.btn.btn-outline-info.task:hover, .btn.btn-outline-info.task[aria-expanded="true"] {
+    background-color: #290001;
+}
+
+.btn.btn-outline-info.task:hover .task-caption, .btn.btn-outline-info.task[aria-expanded="true"] .task-caption {
+    color: whitesmoke;
+}
+
+.card.card-body {
+    width: 90%;
+    margin: 10px auto;
+}
+
+.card.card-body.step {
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+}
+
+.info-task {
+    font-size: 24px;
+    padding: 20px 40px;
+    width: 90%;
+    height: fit-content;
+}
+
+.custom-control-label::before, 
+.custom-control-label::after {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+@media screen and (max-width: 540px) {
+    h1.title-dish {
+        font-size: 12vw;
+    }
+
+    .breadcrumb .breadcrumb-item, .breadcrumb .breadcrumb-item a {
+        font-size: 6vw;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    div.main-detail div.row.stat .col-md-4 ul.info-stat {
+        flex-direction: row;
+        margin: 0px auto;
+        width: 95%;
+    }
+    div.main-detail div.row.stat .col-md-4 ul.info-stat li {
+        font-size: 4vw;
+    }
+
+    .info-task {
+        font-size: 4vw;
+        width: 100%;
+    }
+    #v-pills-tab .nav-link {
+        font-size: 4vw;
+        padding: 0;
+    }
+}
+
+
+
+div#v-pills-tab {
+    width: 40%;
+}
+
+div#v-pills-tabContent {
+    width: 60%;
+}
+
+#v-pills-tab .nav-link {
+    background-color: #edcfa9;
+    color: #290001;
+    font-weight: 800;
+    padding: 18px 20px;
+    margin: 1px;
+    border: 1px solid #290001;
+}
+
+#v-pills-tab .nav-link.active {
+    color: whitesmoke;
+    background-color: #290001;
+}
+
+
+
+.custom-control-input ~ label.custom-control-label {
+    cursor: pointer;
+    padding-left: 10px;
+    user-select: none;
+}
+
+.custom-control-input:checked ~ label.custom-control-label::before {
+    background: #aa4a30;
+    border-color: #290001;
+
+}
+
+.custom-control-input:checked ~ label.custom-control-label {
+    text-decoration: line-through;
+    color: grey;
+}
+
+.task-progress {
+    display: flex;
+    margin-top: 40px;
+    align-items: center;
+}
+
+div.complete {
+    margin-left: 20px;
+    color: green;
+    font-size: 40px;
+}
+
+#complete-step {
+    margin: 0% 30% 2%;
+}
+
+#save-icon {
+    display: block;
+    cursor: pointer;
+}
+
+#save-icon:hover {
+    border-bottom: 1px solid #290001;
+}
+
+.card-section{
+    font-family: sans-serif;
+    color: #000000;
+}
+
+.card-section h2{
+    text-align: center;
+    padding-top: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    font-size: 1.5rem;
+}
+
+.card-section .card .img-thum{
+    height: 100%;
+    width: 100%;
+}
+.card-section .card .img-thum img{
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.card-section .card{
+    border: none;
+    margin-bottom: 40px;
+    user-select: none;
+    cursor: pointer;
+}
+
+.card-section .card:hover {
+    box-shadow: 3px 3px 8px #666;
+}
+
+
+.card-section .card a{
+    text-decoration: none;
+}
+.card-section .card .card-body{
+    padding: 0px;
+    padding-left: 2rem;
+
+}
+.card-section .card .card-body .recipe-title{
+    margin-bottom: 16px;
+    padding-top: .75em;
+    font-size: 2rem;
+
+    font-family: sans-serif;
+    letter-spacing: 0;
+    text-transform: none;
+    margin-top: 20px;
+}
+.card-section .card .card-body .recipe-title a{
+    color: #000;
+}
+.card-section .card .card-body .recipe-title a:hover{
+    color: #c8ad7f;
+}
+
+.card-section .card .card-text{
+    padding-left: 2rem;
+}
+.card-section .card .card-text strong{
+    font-size: 2rem;
+    margin-right: 5px;
+}
+
+.card-section .card .card-text .text-muted > span{
+    margin-right: 20px;
+    font-size: 16px;
+}
+.card-section .card .card-text .text-muted i{
+    margin-right: 5px;
+}
+
+#author {
+    color: #290001;
+    border-bottom: 1px solid #290001;
+}
+
+#author:hover {
+    color: #aa4a30;
+}

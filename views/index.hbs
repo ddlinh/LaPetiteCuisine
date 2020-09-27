@@ -1,0 +1,151 @@
+ <section class="main">
+    <h3 class="main-h3">Recently added</h3>
+    <h2 class="main-h2">Newest recipes</h2>
+    <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel" data-interval="false"> 
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+        <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+        <li data-target="#carouselExampleCaptions" data-slide-to="3"></li>
+      </ol>
+      <div class="carousel-inner">
+        {{#each latest}}
+
+        <div class="carousel-item {{#if @first}}active{{/if}}">
+          <a href="/recipes/{{this.uri}}"><img src="{{this.img}}" class="d-block w-100" alt="..."></a>
+          <div class="carousel-caption d-none d-md-block" onclick="location.href='/recipes/{{this.uri}}'">
+            <h5>{{this.name}}</h5>
+            <p>{{this.description}}</p>
+          </div>
+        </div>
+        {{/each}}
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </section>
+
+
+  <section class="category">
+    <h3>Choose a category</h3>
+    <h2>Recipe Categories</h2>
+    <section class="category-container">
+    
+        <figure class="category-card yellow" onclick="location.href='/recipes-food'">
+            <img src="{{food.img}}" alt="category-food">
+            <div class="fig-caption">
+                <p><span>There’s nothing better than sitting down and enjoy the delicious dishes.</span></p>
+                <h2>Delicious <span>Food</span></h2>
+            </div>
+        </figure>
+        <figure class="category-card blue" onclick="location.href='/recipes-drink'">
+            <img src="{{drink.img}}" alt="category-drink">
+            <div class="fig-caption">
+                <p><span>Few things are better than sharing great food and great drinks with great company.</span></p>
+                <h2>Special <span>Drink</span></h2>
+            </div>
+        </figure>
+        <figure class="category-card red" onclick="location.href='/recipes-dessert'">
+            <img src="{{dessert.img}}" alt="category-desserts">
+            <div class="fig-caption">
+                <p><span>Nothing completes a meal quite like a special sweet.</span></p>
+                <h2>Sweet <span>Desserts</span></h2>
+            </div>
+        </figure>
+        <figure class="category-card green" onclick="location.href='/recipes-salad'">
+            <img src="{{salad.img}}" alt="category-salad">
+            <div class="fig-caption">
+                <p><span>Find out just how delicious it can be with adding vegetables.</span></p>
+                <h2>Flugal <span>Salads</span></h2>
+            </div>
+        </figure>
+    </section>
+  </section>
+
+
+
+  <section class="card-section">
+    
+    
+    <div class="container">
+      <div class="row">
+
+        
+        <div class="col-md-4">
+          <h3 class="card-h3">The recipes for Family</h3>
+          <div class="row">
+            <!--  -->
+            {{#each family}}
+              {{#if @first}}
+                <a href="/recipes/{{this.uri}}">
+                  <div class="card col-12">
+                    <img src="{{this.img}}">
+                    <h5 class="card-title" id="card-title">{{this.name}}</h5>
+                  </div>
+                </a>
+              {{else}}
+                  <div class="card-none col-5">
+                    <a href="/recipes/{{this.uri}}">
+                      <img src="{{this.img}}">
+                      <h5 class="card-title-none" id="card-title">{{this.name}}</h5>
+                    </a>
+                  </div>
+                  {{#if (if_odd @index)}}
+                    <div class="col-2"></div>
+                  {{/if}}
+              {{/if}}
+              
+            {{/each}}
+
+            
+
+          </div>
+            
+        </div>
+
+        <div class="col-md-1">
+
+        </div>
+
+        <div class="col-md-7">
+          <h3 class="card-h3">For Beginner</h3>
+          <h2 class="card-h2">The most simple recipes</h2>
+          <div class="card-columns">
+            {{#each simple}}
+            <div class="card">
+              <div class="card-img">
+                <img class="card-img-top" src="{{this.img}}" alt="Card image cap">
+                
+                
+              </div>
+              <a href="/recipes/{{this.uri}}">
+                <div class="card-body">
+                  <h3 id="trending-recipe-category">{{this.type}}</h3>
+                  <h5 class="card-title" id="card-title">{{this.name}}</h5>
+                  <p class="card-text">
+                    <small class="text-muted">
+                      <i class="fa fa-clock-o"></i><span id="time">{{this.duration}} Mins</span><i class="fa fa-bolt"></i><span id="level">{{this.complex}}</span><i class="fa fa-users"></i><span id="serving">{{this.serve}} People</span>
+                    </small>
+                  </p>
+                </div>
+              </a>
+            </div>
+
+            {{/each}}
+            {{!--  --}}
+            
+            
+           
+          </div>
+        </div>
+        
+      </div>
+    
+    </div>
+  </section>

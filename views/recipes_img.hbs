@@ -1,0 +1,74 @@
+ <div class="navigator">
+    <div class="container">
+      <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item "><a href="/recipes">All Recipes</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{_type}}</li>
+          </ol>
+        </nav>
+  
+      <h2 class="page-title">We found {{page_name}} in your picture</h2>
+    </div>
+
+  </div>
+  
+  <hr class="decorator">
+
+  <div class="card-section">
+    <div class="container">
+      <h2 class="primary">The most suitable recipes</h2>
+      <hr class="decorator">
+
+      <div class="card-container">
+          <div class="row">
+
+           {{#each datas}}
+              {{>recipe_card this}}
+            {{/each}}
+          </div>
+      </div>
+    </div>
+  </div>
+   
+  <div class="card-section" style="margin-top: 80px;">
+    <div class="container">
+      <h2 class="primary">You may also find</h2>
+      <hr class="decorator">
+
+      <div class="card-container">
+          <div class="row">
+
+           {{#each similars}}
+              {{>recipe_card this}}
+            {{/each}}
+          </div>
+      </div>
+    </div>
+  </div>
+  
+  {{!-- <div class="pagination">
+      <ul>
+        <li class="item item-prev">
+          <a href="#">previous</a>
+        </li>
+        <li class="item item-current">
+          <a href="#">1</a>
+        </li>
+        <li class="item item">
+          <a href="#">2</a>
+        </li>
+        <li class="item item">
+          <a href="#">3</a>
+        </li>
+        <li class="item item">
+          <a href="#">4</a>
+        </li>
+        <li class="item item">
+          <a href="#">5</a>
+        </li>
+        <li class="item item-next">
+          <a href="#">next</a>
+        </li>
+      </ul>
+  </div> --}}

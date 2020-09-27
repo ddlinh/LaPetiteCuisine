@@ -1,0 +1,21 @@
+
+ACCOUNT FOR CONNECT TO DASHBOARD
+
+1.	username: ddlinh
+	password: ddlinh18
+
+2.	username: pvdphong
+	password: pvdphong18
+
+3.	username: llha
+	password: llha18
+
+4.	username: ndphu
+	password: ndphu18
+
+5.	username: dqvinh
+	password: dqvinh18
+
+6.	username: guest
+	password: guest18
+__________________________________________________________________________________

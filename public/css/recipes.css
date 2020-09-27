@@ -1,0 +1,196 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+ul li{
+    list-style-type: none;
+}
+a{
+    text-decoration: none;
+}
+
+
+.container{
+    max-width: 80%;
+    font-family: sans-serif;
+    color: #000000;
+}
+
+h2.page-title{
+    margin-bottom: 20px;
+    padding-bottom: 0;
+    border-width: 0;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    font-size: 1.5rem;
+}
+
+.filter .menu-title li{
+    display: inline-block;
+    margin: 0 3px 6px 3px;
+    vertical-align: top;
+}
+
+.filter .menu-title li a{
+    display: block;
+    padding: 10px 30px;
+    border-width: 1px;
+    font: 700 12px/16px serif;
+    font-family: SpartanMB,Poppins,sans-serif;
+    text-transform: none;
+    border-style: solid;
+    border-radius: 4px;
+    transition: border-color 375ms ease-in-out,background-color 375ms ease-in-out,color 375ms ease-in-out;
+    border-color: #e6e6e6;
+    background-color: transparent;
+    color: #666;
+    text-decoration: none;
+}
+
+.filter .menu-title li a:hover{
+    border-color: #000;
+    color: #000;
+}
+
+.card-section{
+    font-family: sans-serif;
+    color: #000000;
+}
+
+.card-section h2{
+    text-align: center;
+    padding-top: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    font-size: 1.5rem;
+}
+
+.card-section .card .img-thum{
+    height: 100%;
+    width: 100%;
+}
+.card-section .card .img-thum img{
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.card-section .card{
+    border: none;
+    margin-bottom: 40px;
+    user-select: none;
+    cursor: pointer;
+}
+
+.card-section .card:hover {
+    box-shadow: 3px 3px 8px #666;
+}
+
+
+.card-section .card a{
+    text-decoration: none;
+}
+.card-section .card .card-body{
+    padding: 0px;
+    padding-left: 2rem;
+
+}
+.card-section .card .card-body .recipe-title{
+    margin-bottom: 16px;
+    padding-top: .75em;
+    font-size: 2rem;
+
+    font-family: sans-serif;
+    letter-spacing: 0;
+    text-transform: none;
+}
+.card-section .card .card-body .recipe-title a{
+    color: #000;
+}
+.card-section .card .card-body .recipe-title a:hover{
+    color: #c8ad7f;
+}
+
+.card-section .card .card-text{
+    padding-left: 2rem;
+}
+.card-section .card .card-text strong{
+    font-size: 2rem;
+    margin-right: 5px;
+}
+
+.card-section .card .card-text .text-muted > span{
+    margin-right: 20px;
+    font-size: 16px;
+}
+.card-section .card .card-text .text-muted i{
+    margin-right: 5px;
+}
+
+
+.pagination{
+    padding: 50px 0px;
+    margin: 0 -3px;
+    position: relative;
+    text-align: center;
+}
+.pagination ul{
+    list-style: none;
+    margin: 0px auto;
+}
+
+.pagination ul .item{
+    display: inline;
+    margin: 0px 10px;
+}
+
+.pagination ul .item a{
+    text-decoration: none;
+    font-family: sans-serif;
+    color: #000;
+    text-transform: uppercase;
+    
+}
+
+.pagination ul .item-prev a{
+    font-weight: 700;
+}
+.pagination ul .item-prev a::before{
+    display: inline-block;
+    margin-right: 8px;
+    font-family: sans-serif;
+    font-size: 28px;
+    font-weight: 3000;
+    content: "←";
+    
+}
+
+.pagination ul .item-next a{
+    font-weight: 700;
+}
+.pagination ul .item-next a::after{
+    display: inline-block;
+    margin-left: 8px;
+    font-family: sans-serif;
+    font-size: 28px;
+    font-weight: 3000;
+    content: "→";
+    
+}
+.pagination ul .item-current a{
+    font-weight: 700;
+}
+
+.navigator .description{
+    color: #666;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    font-weight: 350;
+    letter-spacing: 1px;
+    font-size: 1.3rem;
+    font-family: sans-serif;
+
+}

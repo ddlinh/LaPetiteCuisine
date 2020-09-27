@@ -1,0 +1,119 @@
+<head>
+    <style>
+        body {
+            background-color: #dbcbbd;
+        }
+
+
+        form {
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            margin-top: 200px;
+        }
+
+        form>div {
+            padding: 50px;
+            box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+            background-color: white;
+        }
+
+        .form-group {
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input {
+            outline: none;
+            font-family: "Roboto", sans-serif;
+            outline: 0;
+            background: #f2f2f2;
+            width: 100%;
+            border: 0;
+            margin: 0 0 15px;
+            padding: 15px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+
+        .form-group input::placeholder {
+            color: #000;
+        }
+
+        .btn.btn-primary {
+            margin-top: 0.25rem;
+            width: 100%;
+            text-transform: uppercase;
+            font-family: "Roboto", sans-serif;
+            outline: 0;
+            border: 0;
+            padding: 15px;
+            background-color: #CFBFB2;
+            color: #823C33;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .btn.btn-primary:hover {
+            background-color: #B8AA9E;
+        }
+
+        form>div h3 {
+            font-family: "Roboto", sans-serif;
+            color: #47423D;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<form>
+    <div>
+        <h3 onclick="location.href='/'">La Petite Cuisine</h3>
+        <div class="form-group">
+
+            <input type="text" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Username">
+            {{!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> --}}
+        </div>
+        <div class="form-group">
+
+            <input type="password" class="form-control" id="password" placeholder="Password">
+        </div>
+        <p id="message"></p>
+        <button type="submit" class="btn btn-primary" id="submit">Submit</button>
+        <p>OR</p>
+        <button type="submit" class="btn btn-primary" id="submit-as-guest" onclick="location.href='/users/sign-as-guest'">Sign in As Guest</button>
+    </div>
+
+</form>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(function (e) {
+        $("#submit").click((e) => {
+            e.preventDefault()
+
+            const username = $('#username').val()
+            const password = $('#password').val()
+
+            console.log(username, password)
+
+            $.ajax({
+                url: 'sign-in',
+                method: 'post',
+                data: JSON.stringify({ username, password }),
+                contentType: 'application/json; charset=utf-8',
+                async: false,
+                success: function (data) {
+                    // redirect url /dashboard (view + route chưa code)
+                    window.location.replace(data.url)
+                },
+                error: function (error) {
+                    alert(JSON.stringify(error, null, 4));
+                    const { message } = error.responseJSON;
+                    document.getElementById('message').innerHTML = '';
+                    document.getElementById('message').innerHTML = message;
+                }
+            })
+
+        })
+    })
+</script>

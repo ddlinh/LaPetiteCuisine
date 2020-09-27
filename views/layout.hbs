@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{title}}</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.9/css/fileinput.min.css" media="all"
+    rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="./../css/header-footer.css">
+  <link rel="stylesheet" href="{{css_file}}">
+</head>
+
+<body>
+  <header>
+    <div class="jumbotron">
+      <div class="row">
+        <div class="col-md-5 logo">
+          <img src="../images/logo.png" alt="" width="160px">
+          <h1 onClick="location.href='/'">La Petite Cuisine</h1>
+        </div>
+        <div class="col-md-7 search">
+          <div class="search-group" style="position: relative;">
+            <i class="fa fa-search" aria-hidden="true"
+              style="color: #290001; font-size: 30px; margin-right: 10px; width: 5%;"></i>
+            <input type="search" id="search" placeholder="Type the ingredients. Ex: garlic, shrimp">
+            <i title="Upload an image of ingredients!" id="img-search" onclick="ShowUpImg()" class="fa fa-camera"
+              aria-hidden="true" style="cursor: pointer; position: absolute; right: 5%; top: 25%; font-size: 28px"></i>
+
+          </div>
+
+          <div class="input-group">
+
+            <select class="form-control" id="find-type" title="Criteres for searching">
+              <option value="ingredients" title="Search by the ingredients">Ings</option>
+              <option value="name" title="Search by name">Name</option>
+            </select>
+            <div class="input-group-append">
+              <button id="search-btn" class="btn btn-warning" type="button" onclick="SearchItem()">Search</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <form action="/search" method="post" enctype="multipart/form-data">
+      <div id="input-img" style="visibility: hidden;">
+        <input id="input-b1" name="input-b1" type="file" class="file" data-browse-on-zone-click="true">
+        <i class="fa fa-window-close" aria-hidden="true"
+          style="position: absolute; top: 0; right: 0; font-size: 30px; color: #f5f1da; cursor: pointer;"
+          onclick="ShowUpImg()"></i>
+      </div>
+    </form>
+
+
+    <nav class="navbar navbar-expand-sm navbar-custom">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCustom">
+        <i class="fa fa-bars fa-lg py-1 text-light"></i>
+      </button>
+      <div class="navbar-collapse collapse" id="navbarCustom">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">Categories</a>
+            <div class="dropdown-menu border-0" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/recipes-food">Foods</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="/recipes-drink">Drinks</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="/recipes-dessert">Desserts</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="/recipes-salad">Salads</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="/recipes">All recipes</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/contact">Contact</a>
+          </li>
+          {{#if user.username}}
+          <li class="nav-item">
+            <a class="nav-link" href="/dashboard"><i class="fa fa-user" aria-hidden="true"></i>Hello, {{user.fullname}}
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/users/signout"><i class="fa fa-user" aria-hidden="true"></i> Sign out </a>
+          </li>
+          {{else}}
+          <li class="nav-item">
+            <a class="nav-link" href="/users/sign-in"><i class="fa fa-user" aria-hidden="true"></i> Sign in </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/users/sign-as-guest"><i class="fa fa-user" aria-hidden="true"></i> Sign as guest
+            </a>
+          </li>
+          {{/if}}
+
+        </ul>
+      </div>
+    </nav>
+  </header>
+  {{{body}}}
+  <footer>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6" style="margin-bottom: 30px;">
+          <h4 class="brand">
+            <img src="./images/logo.png" alt="" width="100px">
+            <br>
+            <a href="./" style="font-size: 30px;"><b>La Petite Cuisine</b></a>
+          </h4>
+
+          <p class="text-justify" style="width: 80%; font-size: 20px; letter-spacing: 1px;">is a cooking website that
+            could help everyone, especially the cooking beginners, completing their dishes. Our desire is a diverse and
+            rich culinary environment, giving each family not only delicious meals but also a warm and happy atmosphere.
+          </p>
+          <a href="/about"> <b>More details</b> &gt;&gt; </a>
+        </div>
+        <div class="col-md-6">
+          <div class="row">
+            <div class="col-6">
+              <h4>
+                <i class="fa fa-link" aria-hidden="true"></i>
+                Quick Links
+              </h4>
+              <ul class="footer-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/recipes">All Recipes</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+              </ul>
+            </div>
+            <div class="col-6">
+              <h4>
+                <i class="fa fa-list" aria-hidden="true"></i>
+                Categories
+              </h4>
+              <ul class="footer-links">
+                <li><a href="/recipes-food">Foods</a></li>
+                <li><a href="/recipes-drink">Drinks</a></li>
+                <li><a href="/recipes-dessert">Desserts</a></li>
+                <li><a href="/recipes-salad">Salads</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid container-fluid-2">
+        <div class="row">
+          <div class="col-12">
+            <p class="copyright-text">Copyright &copy; 2020 All Rights Reserved by&nbsp;<b>La Petite Cuisine</b>.</p>
+          </div>
+
+          <div class="col-12">
+            <ul class="social-icons">
+              <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+              <li><a class="instagram" href="#"><i class="fa fa-instagram"></i></a></li>
+              <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+              <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+    integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+    integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.9/js/fileinput.min.js"></script>
+  <script src="./../js/header-footer.js"></script>
+  <script src={{js_file}}></script>
+
+  <script>
+    $("#find-type").change(() => {
+      if (document.getElementById("find-type").value === "name") {
+        document.getElementById("img-search").style.visibility = "hidden";
+        document.getElementById("search").placeholder = "Type the name of dish. Ex: Grilled Shrimp";
+      }
+      else {
+        document.getElementById("img-search").style.visibility = "visible";
+        document.getElementById("search").placeholder = "Type the ingredients. Ex: garlic, shrimp";
+      }
+    })
+
+    var input = document.getElementById("search");
+    input.addEventListener("keyup", function (event) {
+      // Key 13 la phim Enter
+      if (event.keyCode === 13) {
+        // huy cac hanh vi mac dinh cua trang
+        event.preventDefault();
+        // Lien ket voi click cua nut
+        document.getElementById("search-btn").click();
+      }
+    });
+
+    function SearchItem() {
+      var item = document.getElementById("search").value;
+      item = item.toLowerCase();
+      var type = document.getElementById("find-type").value;
+
+      if (type === "name") {
+        if (item.includes(" ")) {
+          item = item.split(" ").join("&");
+        }
+        location.href = `/search-by-name-${item}`;
+      }
+      else {
+        item = item.replace(/,\s+/g, ',');
+        item = item.replace(/\s+,/g, ',');
+        item = item.split(",").join("&");
+        location.href = `/search-by-ingre-${item}`
+      }
+      //alert("Searching...")
+    }
+  </script>
+
+</body>
+
+</html>

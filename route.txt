@@ -1,0 +1,6 @@
+﻿./ ---> trang index.hbs
+./recipes ---> trang recipes.hbs
+./recipes-:cat (food, drink, dessert, salad) ---> trang recipe_cat.hbs
+./recipes/:uri ---> trang detail.hbs
+./sign-in ---> trang signin.hbs
+./users/:user_name ---> giao diện ng dùng tổng quát

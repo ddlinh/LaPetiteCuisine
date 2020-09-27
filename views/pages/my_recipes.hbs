@@ -1,0 +1,593 @@
+<link rel="stylesheet" href="./css/add_recipe.css">
+
+<div class="row">
+    <div class="col-4">
+        <div class="list-group" id="list-tab" role="tablist">
+            
+            <a class="list-group-item list-group-item-action active" id="list-profile-list" data-toggle="list"
+                href="#list-profile" role="tab" aria-controls="profile">My Recipes</a>
+           
+        </div>
+    </div>
+    <div class="col-8">
+        <div class="tab-content" id="nav-tabContent">
+            
+
+
+            <div class="tab-pane fade show active" id="list-profile" role="tabpanel"
+                aria-labelledby="list-profile-list">
+                <h1 class="h2">My Recipes</h1>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+                    data-whatever="@mdo" onclick="ValidateForm()"> + Add recipe</button>
+
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Add Recipe Here</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="dashboard/add-recipe" class="needs-validation" name="addRecipeForm" method="post" enctype="multipart/form-data" novalidate>
+                                    <h3>Information Of Recipe</h3>
+                                    <div class="form-group">
+                                        <label for="name" class="col-form-label">Name dish: <span
+                                                class="obliga">*</span> </label>
+                                        <input type="text" class="form-control" name="name" id="name" 
+                                            placeholder="Enter name dish" required>
+                                        <div class="invalid-feedback">
+                                            Name dish must be filled.
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="date" class="col-form-label">Date:</label>
+                                        <input type="date" class="form-control" name="date" id="date">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="type" class="col-form-label">Type:
+                                        </label>
+                                        <select name="type" id="type">
+                                            <option value="food" selected>Food</option>
+                                            <option value="drink">Drink</option>
+                                            <option value="dessert">Dessert</option>
+                                            <option value="salad">Salad</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="description" class="col-form-label" >Description: <span
+                                                class="obliga">*</span> </label>
+                                        <textarea name="description" id="description" cols="40" rows="5"
+                                            placeholder="Write something about your dishes." required></textarea>
+                                        <div class="invalid-feedback">
+                                            You should give a short description for recipe.
+                                        </div>
+                                    </div>
+
+                                    <label for="input-b1">Upload an image of your dish:</label>
+                                    <input id="input-b1" name="input-b1" type="file" class="file"
+                                        data-browse-on-zone-click="true" required>
+
+                                    <div class="form-group">
+                                        <label for="duration" class="col-form-label">Duration: </label>
+                                        <input type="number" class="form-control" name="duration" id="duration"
+                                            placeholder="How many minutes you have spent on this dish?"> minutes
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="complex" class="col-form-label">Complex:
+                                        </label>
+                                        <select name="complex" id="complex">
+                                            <option value="Easy" selected>Easy</option>
+                                            <option value="Medium">Medium</option>
+                                            <option value="Hard">Hard</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="serve" class="col-form-label">Serving: </label>
+                                        <input type="number" class="form-control" name="serve" id="serve"
+                                            placeholder="How many people can use this dish"> person(s)
+                                    </div>
+
+                                    <div class="form-group" id="ingre-list">
+                                        <h3>Ingredients:</h3>
+                                        <input type="text" class="form-control" name="ingredients" id="ingre-1"
+                                            placeholder="Ingredient 1" required>
+                                        <div class="invalid-feedback">
+                                            Recipe must have at least 1 ingredient.
+                                        </div>
+                                    </div>
+                                    <button type="button" id="add-ingre" class="btn btn-info">+</button>
+
+                                    <div class="form-group" id="direction-list">
+                                        <h3>Direction:</h3>
+                                        <input type="text" class="form-control" name="direction" id="direction-1"
+                                            placeholder="Direction 1" required>
+                                        <div class="invalid-feedback">
+                                            Recipe must have at least 1 step.
+                                        </div>
+                                    </div>
+                                    <button type="button" id="add-direction" class="btn btn-info">+</button>
+
+                                    <br>
+                                    <div class="submit" style="text-align: right;">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary" id="save-button">Save
+                                            recipe</button>
+                                    </div>
+                                </form>
+                            </div>
+
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="editModalLabel">Edit Recipe Here</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="dashboard/edit-recipe" method="post" enctype="multipart/form-data">
+                                    <h3>Information Of Recipe</h3>
+                                    <div class="form-group">
+                                        <label for="name2" class="col-form-label">Name dish: <span
+                                                class="obliga">*</span> </label>
+                                        <input type="text" class="form-control" name="name" id="name2"
+                                            placeholder="Enter name dish">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="date" class="col-form-label">Date:</label>
+                                        <input type="date" class="form-control" name="date" id="date2">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="type2" class="col-form-label">Type:
+                                        </label>
+                                        <select name="type" id="type2">
+                                            <option value="food">Food</option>
+                                            <option value="drink">Drink</option>
+                                            <option value="dessert">Dessert</option>
+                                            <option value="salad">Salad</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="description2" class="col-form-label">Description: <span
+                                                class="obliga">*</span> </label>
+                                        <textarea name="description" id="description2" cols="40" rows="5"
+                                            placeholder="Write something about your dishes.">
+                      </textarea>
+                                    </div>
+
+                                    <label for="input-b1">Upload an image of your dish:</label>
+                                    <input id="input-b1 2" name="input-b1" type="file" class="file"
+                                        data-browse-on-zone-click="true">
+
+                                    <div class="form-group">
+                                        <label for="duration2" class="col-form-label">Duration: </label>
+                                        <input type="number" class="form-control" name="duration" id="duration2"
+                                            placeholder="How many minutes you have spent on this dish?"> minutes
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="complex2" class="col-form-label">Complex:
+                                        </label>
+                                        <select name="complex" id="complex2">
+                                            <option value="Easy">Easy</option>
+                                            <option value="Medium">Medium</option>
+                                            <option value="Hard">Hard</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="serve2" class="col-form-label">Serving: </label>
+                                        <input type="number" class="form-control" name="serve" id="serve2"
+                                            placeholder="How many people can use this dish"> person(s)
+                                    </div>
+
+                                    <div class="form-group" id="ingre-list2">
+                                        <h3>Ingredients:</h3>
+
+                                    </div>
+                                    <button type="button" id="add-ingre2" class="btn btn-info">+</button>
+
+                                    <div class="form-group" id="direction-list2">
+                                        <h3>Direction:</h3>
+
+                                    </div>
+                                    <button type="button" id="add-direction2" class="btn btn-info">+</button>
+
+                                    <br>
+                                    <div class="submit" style="text-align: right;">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary" id="save-change">Save
+                                            change</button>
+                                    </div>
+                                </form>
+                            </div>
+
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div class="album py-5 bg-light">
+                    <div class="container">
+
+                        <div class="row" id="list-recipes">
+                            {{#each data}}
+                            <div class="col-md-4" id={{uri}}>
+                                <div class="card mb-4 box-shadow">
+                                    <img class="card-img-top"
+                                        data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail"
+                                        alt="Card image cap" src="{{img}}" height="200px">
+                                    <div class="card-body">
+                                        <h3>{{name}}</h3>
+                                        <p class="card-text">{{description}}</p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <button type="button" onclick="location.href='/recipes/{{uri}}'"
+                                                    class="btn btn-sm btn-outline-secondary view-button">View</button>
+                                                {{!-- <button type="button"
+                                                    class="btn btn-sm btn-outline-secondary edit-button"
+                                                    data-toggle="modal" data-target="#editModal"
+                                                    data-whatever="hello">Edit</button> --}}
+                                                <button type="button"
+                                                    class="btn btn-sm btn-outline-secondary edit-button"
+                                                    data-toggle="modal" data-target="#editModal"
+                                                    data-whatever="{{uri}}">Edit</button>
+
+                                                <button type=" button"
+                                                    class="btn btn-sm btn-outline-secondary delete-button"
+                                                    key="{{uri}}">Delete</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {{/each}}
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+                <div id="submit-area" style="visibility: hidden;">
+                    <button type="button" class="btn btn-primary" id="undo">Undo</button>
+                    <button type="button" class="btn btn-danger" id="rm-undo">X</button>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+</main>
+</div>
+</div>
+
+
+
+
+</div>
+
+{{!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> --}}
+<script src="https://cdn.rawgit.com/PascaleBeier/bootstrap-validate/v2.2.0/dist/bootstrap-validate.js"></script>
+{{!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script> --}}
+<script>
+/*    $(function() {
+        $("form[name='addRecipeForm']").validate({
+            rules: {
+                name: {
+                    required: true,
+                    minlength: 5,
+                    maxlength: 30,
+                }
+                description: "required",
+                "ingre-1": "required",
+                "direct-1": "required"
+            }
+            messages: {
+                name: {
+                    required: "Name dish must be filled",
+                    minlength: "Name dish too short",
+                    maxlength: "Name dish too long"
+                },
+                description: "Description must be filled",
+                "ingre-1": "Recipe must have at least 1 ingredient.",
+                "direct-1": "Recipe must have at least 1 step."
+            },
+            submitHandler: function(form) {
+            form.submit();
+            }
+        });
+    });*/
+    function ValidateForm() {
+     //   bootstrapValidate("#name", "required: Name dish must not be blank.");
+        document.querySelector("#date").valueAsDate = new Date();
+      //  bootstrapValidate("#description", "required: Description of dish must not be blank.");
+      //  bootstrapValidate("#ingre-1", "required: Recipe must have at least 1 ingredient.");
+        
+        var ingre_stt = 1;
+        var direction_stt = 1;
+
+        $("#add-ingre").click(function () {
+            ingre_stt += 1;
+            //<input type="text" class="form-control" name="ingre-1" id="ingre-1">
+            var add_ingre = document.createElement("div");
+            var new_ingre = document.createElement("input");
+            new_ingre.setAttribute("type", "text");
+            new_ingre.setAttribute("class", "form-control");
+            new_ingre.setAttribute("name", `ingredients`);
+            new_ingre.setAttribute("id", `ingre-${ingre_stt}`);
+            new_ingre.setAttribute("placeholder", `Ingredient ${ingre_stt}`)
+
+            //< span > <i class="fa fa-minus" aria-hidden="true"></i> </span >
+            var rm_ingre = document.createElement("button");
+            rm_ingre.setAttribute("class", "rm-ingre");
+            rm_ingre.setAttribute("id", `rm-${ingre_stt}`)
+            //<i class="fa fa-minus" aria-hidden="true"></i>
+            var rm_icon = document.createElement("i");
+            rm_icon.setAttribute("class", "fa fa-minus");
+            rm_icon.setAttribute("aria-hidden", "true");
+            rm_ingre.appendChild(rm_icon);
+
+            document.getElementById("ingre-list").appendChild(new_ingre);
+        });
+
+        $("#add-direction").click(function () {
+            direction_stt += 1;
+            //<input type="text" class="form-control" name="ingre-1" id="ingre-1">
+            var new_direction = document.createElement("input");
+            new_direction.setAttribute("type", "text");
+            new_direction.setAttribute("class", "form-control");
+            new_direction.setAttribute("name", `direction`);
+            new_direction.setAttribute("id", `direction-${direction_stt}`);
+            new_direction.setAttribute("placeholder", `Direction ${direction_stt}`)
+            document.getElementById("direction-list").appendChild(new_direction);
+        });
+    }
+
+    $('.delete-button').click(function () {
+        const uri = $(this).attr('key');
+        console.log("uri deleting:", uri);
+        // ajax post del-recipe
+        $.ajax({
+            url: '/dashboard/del-recipe',
+            method: 'post',
+            async: false,
+            data: JSON.stringify({ uri: uri }),
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                var element = document.getElementById(uri);
+                element.parentNode.removeChild(element);
+                document.getElementById("submit-area").style.visibility = "visible";
+            },
+            error: function (err) { alert(err) }
+        })
+    });
+    // ajax -> deleteDate '' -> add vao giao dien
+    $('#undo').click(function () {
+        $.ajax({
+            url: '/dashboard/undo-del',
+            method: 'post',
+            async: false,
+            success: function (data) {
+                console.log("data: ", data);
+                if (data.last == true) {
+                    document.getElementById("submit-area").style.visibility = "hidden";
+                }
+
+                const element = document.createElement("div");
+                element.setAttribute("class", "col-md-4");
+                element.setAttribute("id", `${data._doc.uri}`);
+
+                const undo_card = `
+                <div class="card mb-4 box-shadow">
+                    <img class="card-img-top"
+                        data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail"
+                        alt="Card image cap" src="${data._doc.img}" height="200px">
+                    <div class="card-body">
+                        <h3>${data._doc.name}</h3>
+                        <p class="card-text">${data._doc.description}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-sm btn-outline-secondary view-button" onclick="location.href='/recipes/${data._doc.uri}>View</button>
+                                <button type="button" class="btn btn-sm btn-outline-secondary edit-button" data-whatever="${data._doc.uri}">Edit</button>
+                                <button type="button" class="btn btn-sm btn-outline-secondary delete-button"
+                                    key="${data._doc.uri}">Delete</button>
+                            </div>
+                        </div>
+                    </div>`
+
+                element.addEventListener('click', (e) => {
+                    const uri = e.target.getAttribute('key')
+
+                    const type = e.target.getAttribute('id')
+
+                    console.log('uri', uri)
+                    console.log('type', type)
+                    $.ajax({
+                        url: '/dashboard/del-recipe',
+                        method: 'post',
+                        async: false,
+                        data: JSON.stringify({ uri: uri }),
+                        contentType: 'application/json; charset=utf-8',
+                        success: function (data) {
+                            var element = document.getElementById(uri);
+                            element.parentNode.removeChild(element);
+                            document.getElementById("submit-area").style.visibility = "visible";
+                        },
+                        error: function (err) { alert(err) }
+                    })
+
+
+                })
+
+                var list = document.getElementById("list-recipes");
+                list.appendChild(element);
+
+                document.getElementById(`${data._doc.uri}`).innerHTML = undo_card;
+
+
+                // window.location.replace('/dashboard')
+            },
+            error: function (err) { alert(err) }
+        })
+    });
+
+    $('#rm-undo').click(function () {
+        document.getElementById("submit-area").style.visibility = "hidden";
+        $.ajax({ url: '/dashboard/rm-undo', 
+        method: 'get', 
+        success: function (data) { console.log(data) }, 
+        error: function (error) { alert(error) } })
+    })
+
+
+    // TODO: editModal
+    $('#editModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget) // Button that triggered the modal
+        var uri = button.data('whatever') // Extract info from data-* attributes
+        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        console.log(uri)
+        var _data;
+        var modal = $(this)
+
+
+
+        $.ajax({
+            url: '/dashboard/detail',
+            method: 'post',
+            data: JSON.stringify({ uri: uri }),
+            contentType: 'application/json; charset=utf-8',
+            async: false,
+            success: function (data) {
+                console.log(data)
+                _data = data
+                modal.find('.modal-title').text(`Edit recipe ${_data.name}`);
+                modal.find('#name2').val(_data.name);
+
+                $('#name2').attr('readonly', 'true')
+
+                modal.find('textarea[name=description]').val(_data.description);
+                document.querySelector("#date2").valueAsDate = new Date();
+                modal.find('#type2').val(_data.type)
+                modal.find('#complex2').val(_data.complex);
+                modal.find('input.file-caption-name').val(`${_data.img}`);
+                modal.find('#duration2').val(_data.duration);
+                modal.find('#complex2').val(_data.complex);
+                modal.find('#serve2').val(_data.serve);
+                var ingre_list = document.getElementById("ingre-list2");
+                for (var i = 0; i < _data.ingredients.length; i++) {
+                    var ingre = document.createElement("input");
+                    ingre.setAttribute("type", "text");
+                    ingre.setAttribute("class", "form-control");
+                    ingre.setAttribute("name", "ingredients");
+                    ingre.setAttribute("id", `ingre-${i + 1}`);
+                    ingre.setAttribute("value", `${_data.ingredients[i]}`);
+                    ingre_list.appendChild(ingre);
+                    console.log("ingre: ", _data.ingredients[i]);
+                }
+
+                var direct_list = document.getElementById("direction-list2");
+                for (var i = 0; i < _data.direction.length; i++) {
+                    var direct = document.createElement("input");
+                    direct.setAttribute("type", "text");
+                    direct.setAttribute("class", "form-control");
+                    direct.setAttribute("name", "direction");
+                    direct.setAttribute("id", `direct-${i + 1}`);
+                    direct.setAttribute("value", `${_data.direction[i]}`);
+                    direct_list.appendChild(direct);
+                    console.log("ingre: ", _data.direction[i]);
+                }
+
+                var ingre_stt = 1;
+                var direction_stt = 1;
+
+                $("#add-ingre2").click(function () {
+                ingre_stt += 1;
+
+                var new_ingre = document.createElement("input");
+                new_ingre.setAttribute("type", "text");
+                new_ingre.setAttribute("class", "form-control");
+                new_ingre.setAttribute("name", `ingredients`);
+                new_ingre.setAttribute("id", `ingre-${ingre_stt}`);
+                new_ingre.setAttribute("placeholder", `Add more...`)
+
+                var rm_ingre = document.createElement("button");
+                rm_ingre.setAttribute("class", "rm-ingre");
+                rm_ingre.setAttribute("id", `rm-${ingre_stt}`)
+
+                var rm_icon = document.createElement("i");
+                rm_icon.setAttribute("class", "fa fa-minus");
+                rm_icon.setAttribute("aria-hidden", "true");
+                rm_ingre.appendChild(rm_icon);
+
+                document.getElementById("ingre-list2").appendChild(new_ingre);
+            });
+
+            $("#add-direction2").click(function () {
+                direction_stt += 1;
+
+                var new_direction = document.createElement("input");
+                new_direction.setAttribute("type", "text");
+                new_direction.setAttribute("class", "form-control");
+                new_direction.setAttribute("name", `direction`);
+                new_direction.setAttribute("id", `direction-${direction_stt}`);
+                new_direction.setAttribute("placeholder", `Add more...`)
+                document.getElementById("direction-list2").appendChild(new_direction);
+        });
+
+            },
+            error: function (error) { alert(error) }
+        });
+
+
+    });
+
+    (function() {
+        'use strict';
+        window.addEventListener('load', function() {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+                if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+            });
+        }, false);
+    })();
+
+        // button save => ajax url 'dashboard/edit'
+
+</script>

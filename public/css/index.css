@@ -1,0 +1,402 @@
+#carouselExampleCaptions{
+    width: 80%;
+    margin: 0 auto;
+}
+
+
+#carouselExampleCaptions .carousel-inner .carousel-item img{
+    width: 900px;
+    height: 600px;
+    object-fit: cover;
+}
+
+section.main{
+    margin: 130px 0 40px;
+}
+
+#carouselExampleCaptions .carousel-inner .carousel-item .carousel-caption{
+    bottom: 60px; 
+    background: #290001;
+    color: white;
+    opacity: 0.7;
+    cursor: pointer;
+}
+#carouselExampleCaptions .carousel-inner .carousel-item .carousel-caption h5{
+    font-size: 3.5rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#carouselExampleCaptions .carousel-inner .carousel-item .carousel-caption p{
+    font-size: 1.4rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* category */
+.category{
+    text-align: center;
+    margin: 220px 0px;
+}
+.category h3{
+    font-size: 1.8vw;
+    letter-spacing: 3px;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+}
+.category h2{
+    margin-bottom: 40px;
+    font-size: 3.5vw;
+    font-family: 'Acme', sans-serif;
+    color: #3a1c17;
+    letter-spacing: 2px;
+    font-weight: 500;
+    line-height: 1.2;
+}
+.category-container {
+    display: flex;
+    justify-content: center;
+    
+  }
+  
+  figure.category-card {
+    font-family: 'Raleway', Arial, sans-serif;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    margin: 3.5vw;
+    width: 330px;
+    min-width: 300px;
+    border-radius: 50%;
+    background: #000000;
+    box-shadow: -6px 2px 16px rgba(0, 0, 0, 0.8);
+    
+    cursor: pointer;
+    margin: 60px;
+    height: 285px;
+  }
+  
+  figure.category-card * {
+    box-sizing: border-box;
+  }
+  
+  figure.category-card > img {
+    opacity: 1;
+    width: 100%;
+    filter: blur(0px);
+    transition: all 0.35s;
+    transform: scale(1.05);
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  figure.category-card div.fig-caption {
+    left: 0px;
+
+    position: absolute;
+    padding: 0px 10px;
+    right: 0px;
+    text-align: left;
+    bottom: 100%;
+    transition: bottom 0.35s;
+    margin-bottom: -80px;
+    
+  }
+  
+  figure.category-card div.fig-caption h2 {
+      text-align: center;
+      border-radius: 0 0 5px 5px;
+      font-size: 1rem;
+      bottom: -2vw;
+      font-weight: 300;
+      background-color: #000000;
+      position: relative;
+      z-index: 1;
+      padding: 14px 0px;
+      word-spacing: 4px;
+      color: white;
+      
+  }
+  
+  figure.category-card div.fig-caption h2 span {
+    font-weight: 800;
+    font-size: 1.1vw;
+    text-transform: uppercase;
+    
+  }
+  
+  figure.category-card div.fig-caption p {
+      position: relative;
+      background-color: rgba(255, 255, 255, 0.9);
+      color: #000;
+      border-radius: 1em;
+      font-size: 0.9em;
+      min-height: 220px;
+      top: 25px;
+  }
+  
+ 
+  
+  figure.category-card div.fig-caption p span {
+      padding: 6px 20px;
+      font-size: 14px;
+      letter-spacing: 1.5px;
+      position: absolute;
+      bottom: 1px;
+  }
+  
+  figure.category-card.blue div.fig-caption h2 {
+    background: #20638f;
+  }
+  
+  figure.category-card.red div.fig-caption h2 {
+    background: #b1081b;
+  }
+  
+  figure.category-card.yellow div.fig-caption h2 {
+    background: #cc7016;
+  }
+  
+  figure.category-card.green div.fig-caption h2 {
+    background: #1e8449;
+  }
+  
+  figure.category-card a {
+    opacity: 0.7;
+  }
+  
+  figure.category-card a:hover {
+    opacity: 1;
+  }
+  figure.category-card:hover > img, figure.category-card.hover > img {
+    opacity: 0.5;
+    filter: blur(5px);
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.1);
+  }
+  figure.category-card:hover div.fig-caption, figure.category-card.hover div.fig-caption {
+    bottom: 115px;
+  }
+  .category{
+    margin-bottom: 70px;
+  }
+  .card-section{
+    text-align: center;
+  }
+  .card-section .card-h3{
+    font-size: 1.8vw;
+    letter-spacing: 3px;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  }
+  .card-section .card-h2{
+    margin-bottom: 40px;
+    font-size: 3.5vw;
+    font-family: 'Acme', sans-serif;
+    color: #3a1c17;
+    letter-spacing: 2px;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+  .card-section .container{
+    padding: 40px 0px;
+  }
+  
+  .card-section .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    border: none;
+  }
+  .card-section .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.4);
+  }
+  .card-section .card a {
+    color: initial;
+  }
+  .card-section .card a:hover {
+    text-decoration: initial;
+  }
+  .card-section .card .text-muted i {
+    margin: 0 5px 0 20px;
+  }
+
+  .card-section .card h5{
+    font-size: 1.7rem;
+    margin-top: 0.6vw;
+    letter-spacing: 1px;
+    color: rgb(34, 40, 49);
+  }
+  .card-section .card #trending-recipe-category{
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 0.45);
+    margin-bottom: .75rem;
+  }
+
+  .card-section .card-columns .card {
+    margin-bottom: 2.75rem;
+}
+  .card-section .card-columns .card small{
+    color: rgba(0, 0, 0, 0.45);
+  }
+  .card-section .card-img {
+    position: relative;
+  }
+  .card-section .col-md-4{
+    background-color: rgba(255, 236, 219, 100);
+    filter: brightness(105%);
+    padding: 15px;
+    font-family: sans-serif;
+    height: fit-content;
+  }
+  .card-section .col-md-4 .row{
+    padding: 0px 15px;
+  }
+  .card-section .col-md-4 .card{
+    position: relative;
+    padding: 0px;
+    text-align: left;
+    margin-bottom: 30px;
+  }
+  .card-section .col-md-4 a{
+    border: none;
+    text-decoration: none;
+  }
+  
+  .card-section .col-md-4 a:hover .card-title-none{
+    color: #cc7016;
+  }
+  .card-section .col-md-4 .card-none{
+    position: relative;
+    padding: 0px;
+    text-align: left;
+    margin-bottom: 30px;
+    box-shadow: 2px 2px 6px grey;
+  }
+
+  .card-section .col-md-4 .card img{
+    object-fit: cover;
+    width: 100%;
+    height: 300px
+  }
+  
+  .card-section .col-md-4 .card > .card-title{
+    position: absolute;
+    color: white;
+    padding: 12px 10%;
+    display: block;
+    width: 100%;
+    background-color: rgba(34, 40, 49, 0.6);
+    bottom: 0;
+    margin: 0;
+    height: 20%;
+  }
+  .card-section .col-md-4 .card-none img{
+    object-fit: cover;
+    width: 100%;
+    height: 80%
+  }
+
+  .card-section .col-md-4 .card-none .card-title-none{
+    margin-top: 5px;
+    color: rgb(34, 40, 49);
+  }
+
+  .card-section .col-md-4 .card .row .col-md-7{
+    padding: 0px;
+  }
+
+
+  .card-section .card-img .fa-bookmark{
+    position: absolute;
+    bottom: 5%;
+    right: 10%;
+    font-size: 2.5rem;
+    color: white;
+    cursor: pointer;
+  } 
+  .card-section .card-img .fas.fa-bookmark{
+    position: absolute;
+    bottom: 5%;
+    right: 10%;
+    font-size: 2.5rem;
+    color: #290001;
+    cursor: pointer;
+    
+  } 
+
+  .card-section .card-img .fa-bookmark:hover{
+    color: #290001;
+  }
+  .card-section .card-img .fa-bookmark::after{
+    color: #290001;
+  }
+  .card-section .container .col-md-4 h3{
+    margin-bottom: 30px;
+}
+.card-section .container{
+    max-width: 92%;
+    margin: 0 auto;
+}
+  
+
+  
+  .main-h3{
+    text-align: center;
+    font-size: 1.8vw;
+    letter-spacing: 3px;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  }
+
+  .main-h2{
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 3.5vw;
+    font-family: 'Acme', sans-serif;
+    color: #3a1c17;
+    letter-spacing: 2px;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+  
+
+  section.main{
+    margin: 70px 0 0px;
+  }
+  section.category {
+    text-align: center;
+    margin: 100px 0px;
+    }   
+
+    
+
+  @media screen and (max-width: 768px)
+  {
+    figure.category-card div.fig-caption h2 span {
+      font-weight: 800;
+      font-size: 2.8vw;
+    }
+    .category h3{
+      font-size: 2.8vw;
+    }
+    .category h2{
+      font-size: 3.8vw;
+    }
+    figure.category-card div.fig-caption h2{
+      bottom: -5vw;
+    }
+    .category-container{
+        flex-wrap: wrap;
+    }
+    .card-section .card-h3{
+      font-size: 2.8vw;
+    }
+    .card-section .card-h2{
+      font-size: 4.8vw;
+    }
+    .main-h3{
+        font-size: 2.8vw;
+    }
+    .main-h2{
+        font-size: 4.8vw;
+    }
+
+  }
+
